@@ -1,1 +1,16 @@
-<h1>Hola</h1>
+<section>
+  <h1>CATEGORIES</h1>
+  <% @categories.each do |categorie| %>
+    <%= link_to group_path(categorie.id) do %>
+      <div>
+        <%= image_tag categorie.icon %>
+      </div>
+      <div>
+        <h3><%= categorie.name %></h3>
+        <p>$ XX.xx</p>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Add new category', new_group_path %>
+</section>

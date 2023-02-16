@@ -9,4 +9,4 @@ rails generate migration AddUserRefToOperation user:references
 
 rails generate migration CreateJoinTableBetweenGroupsOperations
 
-rails g resource GroupOperations operation:belongs_to group:belongs_to
+ 
