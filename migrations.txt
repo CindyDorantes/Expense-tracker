@@ -7,6 +7,6 @@ Tables
 rails generate migration AddUserRefToGroup user:references
 rails generate migration AddUserRefToOperation user:references
 
-rails generate migration CreateJoinTableBetweenGroupsOperations
+rails generate migration create_groups_operations_join_table
 
  

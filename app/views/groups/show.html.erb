@@ -1,1 +1,4 @@
-<h1>operations list</h1>
+<h1><%= @category.name %><br>TRANSACTIONS LIST</h1>
+
+<%= link_to 'Add new transaction', new_group_operation_path(@category.id) %>
+<%# new_category_procedure_path(@category.id) %>
