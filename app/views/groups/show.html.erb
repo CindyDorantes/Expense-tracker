@@ -1,4 +1,36 @@
-<h1><%= @category.name %><br>TRANSACTIONS LIST</h1>
+<section>
+  <div>
+    <%= link_to groups_path do %>
+      <i class="fa-solid fa-chevron-left"></i>
+    <% end %>
+    <h1><%= @category.name %>:<br>Transactions List</h1>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa-solid fa-right-from-bracket"></i>
+    <% end %>
+  </div>
 
-<%= link_to 'Add new transaction', new_group_operation_path(@category.id) %>
-<%# new_category_procedure_path(@category.id) %>
+  <% if notice %>
+    <p class="alert alert-success text-center bg-main text-text-light"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger text-center bg-main text-text-light"><%= alert %></p>
+  <% end %>
+
+  <div>
+     <p class="font-bold">
+      Total expenses:
+      <%= number_to_currency(@category.operations.sum(:amount)) %>
+    </p>
+  </div>
+
+  <div>
+    <% @operations.each do |expense| %>
+     <%= render partial: "expenses", locals: { expense: expense } %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to 'Add new transaction', new_group_operation_path(@category.id) %>
+  </div>
+</section>
+

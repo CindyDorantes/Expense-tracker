@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def show
     @category = Group.find(params[:id])
-    # @operations = @category.procedures.includes(:categories)
+    @operations = @category.operations
   end
 
   def new
