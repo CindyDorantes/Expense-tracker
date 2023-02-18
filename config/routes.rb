@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :operations
   end
 
+  resources :users
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
   end
