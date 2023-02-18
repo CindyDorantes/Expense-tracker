@@ -1,16 +1,37 @@
-<section>
-  <h1>CATEGORIES</h1>
-  <% @categories.each do |categorie| %>
-    <%= link_to group_path(categorie.id) do %>
-      <div>
-        <%= image_tag categorie.icon %>
-      </div>
-      <div>
-        <h3><%= categorie.name %></h3>
-        <p>$ XX.xx</p>
-      </div>
+<section class="w-full bg-light bg-gradient vh-100">
+
+  <div class="w-screen bg-primary bg-gradient text-2xl text-center text-light py-3 row shadow">
+    <%= link_to root_path, class:"col" do %>
+      <i class="fa-solid fa-arrow-left text-decoration-none text-light fs-3 w-100 h-100 ps-3 pt-2 text-start"></i>
     <% end %>
+    <h1 class="col align-top">Categories</h1>
+    <%= link_to destroy_user_session_path, method: :delete, class:"col"  do %>
+      <i class="fa-solid fa-right-from-bracket text-decoration-none text-light fs-3 w-100 h-100 pe-3 pt-2 text-end"></i>
+    <% end %>
+  </div>
+
+  <% if notice %>
+    <p><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p><%= alert %></p>
   <% end %>
 
-  <%= link_to 'Add new category', new_group_path %>
+  <% @categories.each do |category| %>
+    <div class="m-3 p-2 bg-white border border-dark-subtle rounded shadow-sm">
+      <%= link_to group_path(category.id), class:"row text-decoration-none" do %>
+        <div class="col">
+          <%= image_tag category.icon.variant(:thumb), class:"img-thumbnail" %>
+        </div>
+        <div class="col text-start text-dark">
+          <h3><%= category.name %></h3>
+          <p><%= number_to_currency(category.operations.sum(:amount)) %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="bg-success fixed-bottom">
+    <%= link_to 'Add new category', new_group_path, class:"btn btn-outline-light d-grid m-3" %>
+  </div>
 </section>

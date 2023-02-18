@@ -1,24 +1,41 @@
-<h2>LOG IN</h2>
+<section class="w-full bg-light bg-gradient vh-100">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+  <div class="w-screen bg-primary bg-gradient text-2xl text-center text-light py-3 row shadow">
+    <%= link_to root_path, class:"col" do %>
+      <i class="fa-solid fa-arrow-left text-decoration-none text-light fs-3 w-100 h-100 ps-3 pt-2 text-start"></i>
+    <% end %>
+    <h1 class="col align-top">Log in</h1>
+    <%= link_to destroy_user_session_path, method: :delete, class:"col"  do %>
+      <i class="fa-solid fa-right-from-bracket text-decoration-none text-light fs-3 w-100 h-100 pe-3 pt-2 text-end"></i>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password"  %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <div class="m-4">
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class:"form-control" %>
+      </div><br>
+
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class:"form-control"  %>
+      </div><br>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field form-check">
+          <%= f.check_box :remember_me, class:"form-check-input" %>
+          <%= f.label :remember_me, class:"form-check-label text-secondary" %>
+        </div><br>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", class:"btn btn-primary w-100" %>
+      </div>
     </div>
+
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="text-center mt-5">
+    <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>

@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!
   def index
     # @categories = Group.where(user_id: current_user.id).includes(:operations, icon_attachment: [:blob])
-    @categories = Group.where(user_id: current_user.id)
+    @categories = current_user.groups
   end
 
   def show
