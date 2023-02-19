@@ -153,6 +153,8 @@ Give a ⭐️ if you like this project!
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
+Thanks to Original design idea by [Gregoire Vella on Behance](https://www.behance.net/gregoirevella), author of the [original idea](https://www.behance.net/gallery/19759151/Snapscan-iOs-design-and-branding?tracking_source=)
+
 Thanks to my learning partners for their support and advices
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
