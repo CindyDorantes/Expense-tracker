@@ -16,23 +16,15 @@ class OperationsController < ApplicationController
   end
 
   def create
-    # new object from params
     new_operation = Operation.new(operation_params)
-    # new_operation =
     new_operation.user_id = current_user.id
-    # respond_to block
     respond_to do |format|
       format.html do
-        # if question saves
         if new_operation.save
-          # success message
           flash[:notice] = 'Transaction saved successfully'
-          # redirect to index
           redirect_to group_path(new_operation.group_ids)
         else
-          # error message
           flash.now[:alert] = 'Error: transaction could not be saved'
-          # render new
           render :new, locals: { operation: }
         end
       end
