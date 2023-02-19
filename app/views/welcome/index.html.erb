@@ -1,0 +1,26 @@
+<section class="w-full bg-light bg-gradient vh-100 d-flex flex-column">
+  <div class="h-75 fw-bolder vw-100 text-center d-flex flex-column justify-content-center align-items-center">
+    <h1 class="fw-bolder display-1">Expense</h1>
+    <h1 class="display-1">Tracker</h1>
+  </div>
+
+  <div class="vw-100 d-flex flex-column justify-content-center align-items-center">
+    <% if user_signed_in? %>
+      <%= link_to groups_path, :class => 'navbar-link vw-100 d-grid gap-1 px-3' do %>
+        <button class="btn btn-primary mb-3">START</button>
+      <% end %>
+      Logged in as <strong><%= current_user.email %></strong>.
+      <%= link_to destroy_user_session_path, data: { turbo_method: :delete } , :class => 'navbar-link vw-100 d-grid gap-1 px-3 text-decoration-none' do %>
+        <button class="btn btn-outline-secondary mb-3">LOG OUT</button>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, :class => 'navbar-link vw-100 d-grid gap-1 px-3' do %>
+        <button class="btn btn-primary mb-3">LOG IN</button>
+      <% end %>
+      <br>
+      <%= link_to new_user_registration_path, :class => 'navbar-link vw-100 d-grid gap-1 px-3 text-decoration-none' do %>
+        <button class="btn btn-outline-secondary mb-3">SIGN UP</button>
+      <% end %>
+    <% end %>
+  </div>
+</section>

@@ -1,0 +1,12 @@
+Models 
+rails generate model User name:string
+rails generate model Group name:string icon:string
+rails generate model Operation name:string amount:decimal
+
+Tables
+rails generate migration AddUserRefToGroup user:references
+rails generate migration AddUserRefToOperation user:references
+
+rails generate migration create_groups_operations_join_table
+
+ 

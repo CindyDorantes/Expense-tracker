@@ -1,0 +1,47 @@
+<section  class="w-full bg-light bg-gradient vh-100">
+
+  <div class="w-screen bg-primary bg-gradient text-2xl text-center text-light py-3 row shadow">
+    <%= link_to root_path, class:"col" do %>
+      <i class="fa-solid fa-arrow-left text-decoration-none text-light fs-3 w-100 h-100 ps-3 pt-2 text-start"></i>
+    <% end %>
+    <h1 class="col align-top">Register</h1>
+    <%= link_to destroy_user_session_path, method: :delete, class:"col"  do %>
+      <i class="fa-solid fa-right-from-bracket text-decoration-none text-light fs-3 w-100 h-100 pe-3 pt-2 text-end"></i>
+    <% end %>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="m-4">
+      <div class="field mb-3">
+        <%= f.text_field :name, autofocus: true, placeholder: "Full name", class:"form-control"%>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class:"form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <% if @minimum_password_length %>
+        <em class="form-text">(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br/>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "New password", class:"form-control" %>
+      </div>
+
+      <div class="field mb-3">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm password", class:"form-control" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up", class:"btn btn-primary w-100" %>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="text-center mt-5">
+    <%= render "devise/shared/links" %>
+  </div>
+  
+</section>

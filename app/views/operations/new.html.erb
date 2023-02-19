@@ -1,0 +1,49 @@
+<section class="w-full bg-light bg-gradient vh-100">
+
+  <div class="w-screen bg-primary bg-gradient text-2xl text-center text-light py-3 row shadow">
+    <%= link_to group_path(@group.id), class:"col" do %>
+      <i class="fa-solid fa-arrow-left text-decoration-none text-light fs-3 w-100 h-100 ps-3 pt-2 text-start"></i>
+    <% end %>
+    <h1 class="col align-top">Transaction</h1>
+    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class:"col"  do %>
+      <i class="fa-solid fa-right-from-bracket text-decoration-none text-light fs-3 w-100 h-100 pe-3 pt-2 text-end"></i>
+    <% end %>
+  </div>
+
+  <% if notice %>
+    <p class="alert alert-success text-center bg-main text-text-light"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger text-center bg-main text-text-light"><%= alert %></p>
+  <% end %>
+
+  <%= form_with model: operation, url: group_operations_path, method: :post, local: true, scope: :new_operation, class:"m-4" do |f| %>
+    <div>
+      <%= f.label :Transaction_name, class:"form-label" %><br>
+      <%= f.text_field :name, placeholder: 'Enter name', class:"form-control" %>
+    </div>
+    <br>
+
+    <div class="mt-3">
+      <%= f.label :Amount, class:"form-label" %><br>
+      <%= f.number_field :amount, placeholder: 'Amount' %>
+    </div>
+    <br>
+
+    <div class="mt-3">
+      <%= f.label :category, "Select the category", class:"form-label" %>
+      <br>
+      <%= f.collection_check_boxes(:group_ids, @user.groups.order( 'name ASC' ), :id, :name) do |b| %>
+        <div class="form-check">
+          <%= b.check_box class:"form-check-input" %>
+          <%= b.label class:"form-check-label" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="bg-success fixed-bottom ps-5">
+    <%= f.submit "Add Transaction", class:"btn btn-outline-light w-75 d-grid m-3"%>
+    </div>
+
+  <% end %>
+</section>
