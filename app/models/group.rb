@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   has_one_attached :icon do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100]
   end
-  
+
   validates :name, presence: true, length: { maximum: 250 }
   validates :icon, presence: true
 end

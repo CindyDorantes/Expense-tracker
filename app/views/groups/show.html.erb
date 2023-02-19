@@ -4,7 +4,7 @@
       <i class="fa-solid fa-arrow-left text-decoration-none text-light fs-3 w-100 h-100 ps-3 pt-2 text-start"></i>
     <% end %>
     <h1 class="col align-top">Transactions</h1>
-    <%= link_to destroy_user_session_path, method: :delete, class:"col"  do %>
+    <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class:"col"  do %>
       <i class="fa-solid fa-right-from-bracket text-decoration-none text-light fs-3 w-100 h-100 pe-3 pt-2 text-end"></i>
     <% end %>
   </div>

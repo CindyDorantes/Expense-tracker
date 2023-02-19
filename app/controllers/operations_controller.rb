@@ -11,14 +11,14 @@ class OperationsController < ApplicationController
     operation = Operation.new
     operation.group_ids = @group.id
     respond_to do |format|
-      format.html { render :new, locals: { operation: operation } }
-    end  
+      format.html { render :new, locals: { operation: } }
+    end
   end
 
   def create
     # new object from params
     new_operation = Operation.new(operation_params)
-    # new_operation = 
+    # new_operation =
     new_operation.user_id = current_user.id
     # respond_to block
     respond_to do |format|
@@ -26,14 +26,14 @@ class OperationsController < ApplicationController
         # if question saves
         if new_operation.save
           # success message
-          flash[:notice] = "Transaction saved successfully"
+          flash[:notice] = 'Transaction saved successfully'
           # redirect to index
           redirect_to group_path(new_operation.group_ids)
         else
           # error message
-          flash.now[:alert] = "Error: transaction could not be saved"
+          flash.now[:alert] = 'Error: transaction could not be saved'
           # render new
-          render :new, locals: { operation: operation }
+          render :new, locals: { operation: }
         end
       end
     end
